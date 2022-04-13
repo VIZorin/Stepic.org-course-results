@@ -17,32 +17,32 @@ m 2
 2 m
 */
 
-import java.util.*;
+import java.util.Scanner;
 
 class MySolution {
 
     public static int numCell (int coorX, int coorY, int maxX, int maxY, int[][] fld) {   
         int num=0;
-/* 1 (up)*/         if (coorY>0) if (fld[coorY-1][coorX]==9) num++;
-/* 2 (up left)*/    if (coorY>0 && coorX>0) if (fld[coorY-1][coorX-1]==9) num++;
-/* 3 (left)*/       if (coorX>0) if (fld[coorY][coorX-1]==9) num++;
-/* 4 (dn left)*/    if (coorY<maxY && coorX>0) if (fld[coorY+1][coorX-1]==9) num++;
-/* 5 (dn)*/         if (coorY<maxY) if (fld[coorY+1][coorX]==9) num++;
+/* 1 (up)*/         if (coorY>0)                  if (fld[coorY-1][coorX]==9) num++;
+/* 2 (up left)*/    if (coorY>0 && coorX>0)       if (fld[coorY-1][coorX-1]==9) num++;
+/* 3 (left)*/       if (coorX>0)                  if (fld[coorY][coorX-1]==9) num++;
+/* 4 (dn left)*/    if (coorY<maxY && coorX>0)    if (fld[coorY+1][coorX-1]==9) num++;
+/* 5 (dn)*/         if (coorY<maxY)               if (fld[coorY+1][coorX]==9) num++;
 /* 6 (dn right)*/   if (coorY<maxY && coorX<maxX) if (fld[coorY+1][coorX+1]==9) num++;
-/* 7 (right)*/      if (coorX<maxX) if (fld[coorY][coorX+1]==9) num++;
-/* 8 (up right)*/   if (coorY>0 && coorX<maxX) if (fld[coorY-1][coorX+1]==9) num++;
+/* 7 (right)*/      if (coorX<maxX)               if (fld[coorY][coorX+1]==9) num++;
+/* 8 (up right)*/   if (coorY>0 && coorX<maxX)    if (fld[coorY-1][coorX+1]==9) num++;
         return num;
     }
     
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        int m=sc.nextInt(), n=sc.nextInt(), k=sc.nextInt(), y1, x1;
-        int field[][]=new int[m][n];
-        for (int i=1;i<=k;i++) { y1=sc.nextInt(); x1=sc.nextInt(); field[y1-1][x1-1]=9; }
-        for (int y=1;y<=m;y++) {
-            for (int x=1;x<=n;x++) {
-                if (field[y-1][x-1]==9) System.out.print(x<n ? "m " : "m"); 
-                else System.out.print(x<n ? numCell(x-1,y-1,n-1,m-1,field)+" " : numCell(x-1,y-1,n-1,m-1,field)); 
+        int m=sc.nextInt(), n=sc.nextInt(), k=sc.nextInt();
+        int field[][]=new int[m--][n--];
+        if (k>0) for (int i=1;i<=k;i++) { field[sc.nextInt()-1][sc.nextInt()-1]=9; }
+        for (int y=0;y<=m;y++) {
+            for (int x=0;x<=n;x++) {
+                if (field[y][x]==9) System.out.print(x<n ? "m " : "m"); 
+                else System.out.print(x<n ? numCell(x,y,n,m,field)+" " : numCell(x,y,n,m,field)); 
             } System.out.println();   
         }
     }
