@@ -36,9 +36,9 @@ class MySolution {
     
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        int m=sc.nextInt(), n=sc.nextInt(), k=sc.nextInt();
+        int m=Math.abs(sc.nextInt()), n=Math.abs(sc.nextInt()), k=sc.nextInt();
         int field[][]=new int[m--][n--];
-        if (k>0) for (int i=1;i<=k;i++) { field[sc.nextInt()-1][sc.nextInt()-1]=9; }
+        if (k>0) for (int i=1;i<=k;i++) { field[Math.abs(sc.nextInt()-1)][Math.abs(sc.nextInt()-1)]=9; }
         for (int y=0;y<=m;y++) {
             for (int x=0;x<=n;x++) {
                 if (field[y][x]==9) System.out.print(x<n ? "m " : "m"); 
