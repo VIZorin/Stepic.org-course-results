@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 class MySolution {
 
-    public static int numCell (int coorX, int coorY, int maxX, int maxY, int[][] fld) {   
+    public static int numCell(int coorX, int coorY, int maxX, int maxY, int[][] fld) {   
         int num=0;
 /* 1 (up)*/         if (coorY>0)                  if (fld[coorY-1][coorX]==9) num++;
 /* 2 (up left)*/    if (coorY>0 && coorX>0)       if (fld[coorY-1][coorX-1]==9) num++;
